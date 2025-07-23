@@ -35,7 +35,7 @@ public class             Driver {
                     options.setUdid("emulator-5554");
                     options.setNoReset(false);
                     options.autoGrantPermissions();
-                    options.setNewCommandTimeout(Duration.ofMinutes(20));
+                    options.setNewCommandTimeout(Duration.ofSeconds(20));
                     try {
                         driver = new AndroidDriver(
                                 new URL("http://0.0.0.0:4723"), options
