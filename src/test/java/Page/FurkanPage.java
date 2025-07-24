@@ -1,6 +1,5 @@
 package Page;
 
-
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -25,9 +24,8 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import static utilities.Driver.getAppiumDriver;
 
-@Getter
-public class QueryCardPage {
-    public QueryCardPage() {
+public class FurkanPage {
+    public FurkanPage() {
         PageFactory.initElements(new AppiumFieldDecorator(getAppiumDriver()), this);
     }
     public static AndroidDriver driver= (AndroidDriver) getAppiumDriver();
@@ -38,6 +36,8 @@ public class QueryCardPage {
     private WebElement searchBoxElement;
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sign In\").instance(1)")
     private WebElement signInLoginButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"*Use Email Instead\")")
+    private WebElement phonetoMailButton;
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
     private WebElement phoneTextBox;
     @AndroidFindBy(accessibility = "See All")
@@ -113,6 +113,11 @@ public class QueryCardPage {
         searchBoxElement.click();
     }
 
+    public void emailInsteadClick() {
+        assertTrue(phonetoMailButton.isDisplayed());
+        phonetoMailButton.click();
+    }
+
     public void phoneTextBoxClickAndSendKeys(String phoneNumber) {
         assertTrue(phoneTextBox.isDisplayed());
         phoneTextBox.click();
@@ -149,6 +154,8 @@ public class QueryCardPage {
 
     }
 
+
+
     @FindBy(xpath = "(//android.view.View)[6]")
     public WebElement PageTitle;
 
@@ -184,7 +191,7 @@ public class QueryCardPage {
     public void googleSearchToQueryCart(){
 
         ReusableMethods.wait(6);
-       // assertTrue(googleSearchBox.isEnabled());
+        // assertTrue(googleSearchBox.isEnabled());
         googleSearchBox.sendKeys("querycart.com/#/home");
 
 
@@ -210,14 +217,8 @@ public class QueryCardPage {
         qcUrlPasswordTextBox.click();
         qcUrlPasswordTextBox.sendKeys("Query.05042025");
 
-       // assertTrue(qcUrlSigninButton.isEnabled());
-       // qcUrlSigninButton.click();
+        // assertTrue(qcUrlSigninButton.isEnabled());
+        // qcUrlSigninButton.click();
     }
-
+//android.view.View[@content-desc="*Use Email Instead"]
 }
-
-
-
-
-
-
