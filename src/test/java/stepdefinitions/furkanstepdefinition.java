@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import java.util.List;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -152,4 +153,28 @@ public class furkanstepdefinition extends OptionsMet {
         Assert.assertTrue("Şifre görünür kaldı", "true".equals(passwordType));
         System.out.println("Şifre gizli hale getirildi");
     }
+
+
+    //US13 İçin
+    @When("Men Category Visibility and Functionality on Homepage")
+    public void homepage_men_category_display(){
+        ReusableMethods.wait(1); // Sayfanın yüklenmesini bekle
+        furkancard.verifyMenAndMenClothingVisible();
+        furkancard.testMenAndMenClothingClickableAndActive();
+    }
+    @When("Taps on the first product inside the Men category")
+    public void tap_first_product_in_men_category(){
+        ReusableMethods.wait(1); // Sayfanın yüklenmesini bekle
+        furkancard.testFirstProductInMenCategory();
+    }
+    @When("The user adds the first product to the cart")
+    public void add_first_product_to_cart(){
+        furkancard.testFirstProductAddToCart();
+    }
+
+    @When("User checks and clicks the filter button in Men category")
+    public void user_checks_and_clicks_filter_button() {
+        furkancard.verifyAndClickFilterButton();
+    }
+
 } 
