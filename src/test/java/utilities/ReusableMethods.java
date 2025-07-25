@@ -20,9 +20,7 @@ import java.io.IOException;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class ReusableMethods {
 
@@ -102,6 +100,21 @@ public class ReusableMethods {
                 .release()
                 .perform();
     }
+    public static void ekranKaydirma2(double percent){
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        Map<String, Object> params = new HashMap<>();
+        params.put("direction", "up");
+        params.put("percent", percent); // swipe % of the screen (for example, 0.10)
+        // Define the swipe area (bounding box)
+        params.put("left", 200);
+        params.put("top", 200);
+        params.put("width", 1440);
+        params.put("height", 3120);
+
+
+        driver.executeScript("mobile: swipeGesture", params);
+    }
+
     public static void wait(int saniye) {
         try {
             Thread.sleep(saniye * 1000);
