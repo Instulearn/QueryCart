@@ -1,5 +1,6 @@
 package Page;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -30,7 +31,15 @@ public class FurkanPage {
     public FurkanPage() {
         PageFactory.initElements(new AppiumFieldDecorator(getAppiumDriver()), this);
     }
-    public static AndroidDriver driver= (AndroidDriver) getAppiumDriver();
+    public static AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+
+    //TODO ---------------------------------------------
+    // BU BÖLÜM USER STORYLERE GÖRE LOCATOR İÇERMEKTEDİR
+    // -------------------------------------------------
+
+    //US08
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ImageView")
+    private WebElement rememberMeCheckBox;
 
     //US13
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Men\")")
@@ -39,14 +48,10 @@ public class FurkanPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Men Clothing\")")
     private WebElement menClothingCategoryButton;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" +
-            "0 (0  Reviews)\n" +
-            "$15.00\"]")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" + "0 (0  Reviews)\n" + "$15.00\"]")
     private WebElement firstProductInMenCategory;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" +
-            "0 (0  Reviews)\n" +
-            "$15.00\"]/android.widget.ImageView")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" + "0 (0  Reviews)\n" + "$15.00\"]/android.widget.ImageView")
     private WebElement firstProductWhistlistButton;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Black\")")
@@ -58,7 +63,11 @@ public class FurkanPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
     private WebElement filterButton;
 
-    // Ekranda aşağı kaydırma fonksiyonu (Appium 2.x uyumlu)
+    //TODO ---------------------------------------------
+    // BU BÖLÜMDEN SONRASI FONKSİYONLAR İÇERMEKTEDİR
+    // -------------------------------------------------
+
+    // Genel Fonksiyonlar
     public void scrollDown() {
         try {
             int screenWidth = driver.manage().window().getSize().getWidth();
@@ -81,7 +90,34 @@ public class FurkanPage {
         }
     }
 
-    // Add To Cart butonu görünene kadar kaydır
+    public void checkButtonByDescription(String description) {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        try {
+            WebElement button = driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().description(\"" + description + "\")"));
+
+            assertTrue(description + " butonu görünür değil!", button.isDisplayed());
+            System.out.println(description + " butonu görünür!");
+        } catch (Exception e) {
+            System.out.println(description + " butonu görünür değil: " + e.getMessage());
+            throw e;
+        }
+    }
+
+
+    //US08 Fonksiyonlar
+    public void tapcheckbox() {
+        try {
+            assertTrue("Remember Me Checkbox görünür değil!", rememberMeCheckBox.isDisplayed());
+            System.out.println("Remember Me Checkbox görünür!");
+            rememberMeCheckBox.click();
+        } catch (Exception e) {
+            System.out.println("Remember Me Checkbox görünür değil: " + e.getMessage());
+            throw e;
+        }
+    }
+
+
+    //US13 Fonksiyonlar
     public void scrollToAddToCartButton() {
         int maxScroll = 10;
         int count = 0;
@@ -192,4 +228,6 @@ public class FurkanPage {
             throw e;
         }
     }
+
+
 }
