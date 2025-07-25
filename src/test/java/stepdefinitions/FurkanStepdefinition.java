@@ -13,11 +13,8 @@ import static org.junit.Assert.assertTrue;
 import static utilities.Driver.getAppiumDriver;
 
 public class FurkanStepdefinition extends OptionsMet {
-    
-    QueryCardPage card = new QueryCardPage();
+
     FurkanPage furkancard = new FurkanPage();
-    LoginPage login = new LoginPage();
-    Actions actions = new Actions(getAppiumDriver());
 
     //Genel
     @Given("User verifies the button with description {string}")

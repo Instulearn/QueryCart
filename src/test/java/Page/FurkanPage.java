@@ -33,9 +33,11 @@ public class FurkanPage {
     }
     public static AndroidDriver driver = (AndroidDriver) getAppiumDriver();
 
+
     //TODO ---------------------------------------------
     // BU BÖLÜM USER STORYLERE GÖRE LOCATOR İÇERMEKTEDİR
     // -------------------------------------------------
+
 
     //US08
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ImageView")
@@ -63,9 +65,11 @@ public class FurkanPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
     private WebElement filterButton;
 
+
     //TODO ---------------------------------------------
     // BU BÖLÜMDEN SONRASI FONKSİYONLAR İÇERMEKTEDİR
     // -------------------------------------------------
+
 
     // Genel Fonksiyonlar
     public void scrollDown() {
