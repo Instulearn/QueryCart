@@ -16,7 +16,9 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
+import static Page.QueryCardPage.driver;
 import static org.junit.Assert.assertTrue;
 import static utilities.Driver.getAppiumDriver;
 
@@ -84,9 +86,16 @@ public class OptionsMet {
 
     public static void VerifyElementText(String description) {
         AndroidDriver driver = (AndroidDriver) getAppiumDriver();
-        WebElement webElement = driver.findElement(AppiumBy.androidUIAutomator(
-                "new UiSelector().description(\"" + description + "\")"));
-        assertTrue(webElement.isDisplayed());
+
+        try {
+            WebElement element = driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiSelector().description(\"" + description + "\")"));
+
+            assertTrue("Element with description '" + description + "' is not displayed.", element.isDisplayed());
+            //System.out.println(" Element with description '" + description + "' is visible.");
+        } catch (NoSuchElementException e) {
+            throw new AssertionError(" Element with description '" + description + "' not found.", e);
+        }
     }
 
     public static void hideKeyboard() {
@@ -105,7 +114,7 @@ public class OptionsMet {
         String xpathExpression = String.format("//android.view.View[contains(@content-desc, '%s') and contains(@content-desc, '%s') and contains(@content-desc, '%s')]/android.widget.ImageView", itemName, reviews, price);
        ReusableMethods.wait(3);
         // Öğeyi bulma
-        WebElement element = getAppiumDriver().findElement(AppiumBy.xpath(xpathExpression));
+        WebElement element = driver.findElement(AppiumBy.xpath(xpathExpression));
 
         // Öğeyle etkileşim
         element.click();
