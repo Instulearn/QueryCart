@@ -36,7 +36,7 @@ public class QueryCardPage {
     private WebElement queryCardLogoElement;
     @AndroidFindBy(xpath = "(//android.widget.ImageView[1])[2]")
     private WebElement searchBoxElement;
-    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sign In\").instance(1)")
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Sign In\")")
     private WebElement signInLoginButton;
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
     private WebElement phoneTextBox;
@@ -202,6 +202,9 @@ public class QueryCardPage {
        // assertTrue(qcUrlSigninButton.isEnabled());
        // qcUrlSigninButton.click();
     }
+
+    @AndroidFindBy(id = "Flower Print Foil T-shirt\\n0 (0 Reviews)\\n$65.00")
+    private WebElement product1;
 
 }
 
