@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static Page.QueryCardPage.driver;
 import static org.junit.Assert.assertTrue;
 import static utilities.Driver.getAppiumDriver;
 
@@ -113,7 +114,7 @@ public class OptionsMet {
         String xpathExpression = String.format("//android.view.View[contains(@content-desc, '%s') and contains(@content-desc, '%s') and contains(@content-desc, '%s')]/android.widget.ImageView", itemName, reviews, price);
        ReusableMethods.wait(3);
         // Öğeyi bulma
-        WebElement element = getAppiumDriver().findElement(AppiumBy.xpath(xpathExpression));
+        WebElement element = driver.findElement(AppiumBy.xpath(xpathExpression));
 
         // Öğeyle etkileşim
         element.click();

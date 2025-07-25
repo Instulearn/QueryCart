@@ -214,13 +214,18 @@ public class QueryCardPage {
        // qcUrlSigninButton.click();
     }
 
-    @AndroidFindBy(id = "Flower Print Foil T-shirt\\n0 (0 Reviews)\\n$65.00")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Flower Print Foil T-shirt\n" +
+            "0 (0  Reviews)\n" +
+            "$65.00\"]")
     private WebElement product1;
 
+    @AndroidFindBy(accessibility = "M")
+    private WebElement productSizeM;
+
+    @AndroidFindBy(accessibility = "Add To Cart")
+    private WebElement addToCartButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(12)")
+    private WebElement cartButton;
+
 }
-
-
-
-
-
-
