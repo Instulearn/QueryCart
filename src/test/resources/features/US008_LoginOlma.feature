@@ -16,6 +16,12 @@ Feature: US008 Login Olma
   Scenario: Login sayfasinda SignIn butonu gorunur ve aktif olmali.
     * User clicks the button with description "Profile"
     * User clicks the button with description "Sign In"
+    * User verifies the button with description "Sign In"
+
+  @login
+  Scenario: Giris yapilan bilgilerin hatirlanmasi icin Remember me checkBox'i secilebilir olmali.
+    * User clicks the button with description "Profile"
+    * User clicks the button with description "Sign In"
     * The user taps the "Remember me" checkbox
 
   @login
