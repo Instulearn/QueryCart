@@ -43,6 +43,10 @@ public class FurkanPage {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ImageView")
     private WebElement rememberMeCheckBox;
 
+    //US12
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Flower Print Foil T-shirt\n" + "0 (0  Reviews)\n" + "$65.00\")")
+    private WebElement firstProductInHomePage;
+
     //US13
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Men\")")
     private WebElement menCategoryButton;
@@ -120,6 +124,17 @@ public class FurkanPage {
         }
     }
 
+    //US12 Fonksiyonlar
+    public void testfirstproductinhomepage() {
+        try {
+            assertTrue("Ürün görünür değil!", firstProductInHomePage.isDisplayed());
+            System.out.println("Ürün görünür!");
+            firstProductInHomePage.click();
+        }catch (Exception e) {
+            System.out.println("Ürün görünür değil: " + e.getMessage());
+            throw e;
+        }
+    }
 
     //US13 Fonksiyonlar
     public void scrollToAddToCartButton() {
@@ -232,6 +247,7 @@ public class FurkanPage {
             throw e;
         }
     }
+
 
 
 }

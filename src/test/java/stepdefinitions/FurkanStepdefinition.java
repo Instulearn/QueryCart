@@ -29,6 +29,12 @@ public class FurkanStepdefinition extends OptionsMet {
         furkancard.tapcheckbox();
     }
 
+    //US12
+    @When("User verifies and click the first product in homepage.")
+    public void first_product_in_homepage(){
+        furkancard.testfirstproductinhomepage();
+    }
+
     //US13
     @When("Men Category Visibility and Functionality on Homepage")
     public void homepage_men_category_display(){
