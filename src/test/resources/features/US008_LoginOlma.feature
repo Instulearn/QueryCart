@@ -1,3 +1,4 @@
+@furkan
 Feature: US008 Login Olma
   Kayıtlı bir kullanici olarak siteye kaydoldugum (email/telefon ve password) bilgilerimle login olabilmek istiyorum.
 

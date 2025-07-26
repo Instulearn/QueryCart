@@ -17,7 +17,7 @@ Feature: US012 Urun Detaylı Bilgileri
     * User verifies the button with description "Details"
     * User verifies the button with description "Videos"
     * User verifies the button with description "Review"
-    * User verifies the button with description "Shipping&Return"
+    * User verifies the button with description "Shipping & Return"
 
   @furkan
   Scenario: Details butonuna tıklandıgında Product Details baslıgı ve urune ait bilgiler goruntulenmeli

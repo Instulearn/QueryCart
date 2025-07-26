@@ -1,6 +1,5 @@
 Feature: As a user, I want to create a favorite list with the products I like without registering.
 
-  @Kc
   Background: User opens the app
     Given User makes driver adjustments
           # Kullanıcı sürücü ayarlamalarını yapar
