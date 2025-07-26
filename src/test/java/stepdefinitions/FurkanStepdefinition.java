@@ -23,6 +23,13 @@ public class FurkanStepdefinition extends OptionsMet {
         furkancard.checkButtonByDescription(description);
     }
 
+    @Given("User swipe the button with description {string}")
+    public void swipe_button_visible_on_screen(String description) {
+        ReusableMethods.wait(5);
+        furkancard.swipeButtonByDescription(description);
+    }
+
+
     //US08
     @When("The user taps the \"Remember me\" checkbox")
     public void tap_remember_me_checkbox(){
