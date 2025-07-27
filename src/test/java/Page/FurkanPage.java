@@ -26,6 +26,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 import static utilities.Driver.getAppiumDriver;
+import static utilities.OptionsMet.KeyBack;
 
 public class FurkanPage {
     public FurkanPage() {
@@ -38,6 +39,9 @@ public class FurkanPage {
     // BU BÖLÜM USER STORYLERE GÖRE LOCATOR İÇERMEKTEDİR
     // -------------------------------------------------
 
+    //Genel Locator
+    @AndroidFindBy(xpath = "(//android.widget.ImageView[1])[1]")
+    private WebElement queryCardLogoElement;
 
     //US08
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.ImageView")
@@ -77,6 +81,7 @@ public class FurkanPage {
 
     // Genel Fonksiyonlar
     public void scrollDown() {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
         try {
             int screenWidth = driver.manage().window().getSize().getWidth();
             int screenHeight = driver.manage().window().getSize().getHeight();
@@ -112,6 +117,7 @@ public class FurkanPage {
     }
 
     public void swipeButtonByDescription(String description) {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
         int maxScroll = 10;
         int count = 0;
         while (count < maxScroll) {
@@ -130,6 +136,25 @@ public class FurkanPage {
         if (count == maxScroll) {
             throw new RuntimeException("Add To Cart butonu bulunamadı!");
         }
+    }
+
+    public void backfonksiyon(String sayi) {
+        int clickCount = Integer.parseInt(sayi);
+        for (int i = 0; i < clickCount; i++) {
+            KeyBack();
+            ReusableMethods.wait(1); // Her geri tuşu arasında 1 saniye bekle
+        }
+    }
+
+    public void LogoGorunurTest() {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        assertTrue(queryCardLogoElement.isDisplayed());
+        queryCardLogoElement.click();
     }
 
     //US08 Fonksiyonlar
@@ -158,6 +183,7 @@ public class FurkanPage {
 
     //US13 Fonksiyonlar
     public void scrollToAddToCartButton() {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
         int maxScroll = 10;
         int count = 0;
         while (count < maxScroll) {
@@ -190,6 +216,7 @@ public class FurkanPage {
     }
 
     public void testMenAndMenClothingClickableAndActive() {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
         try {
             // Men kategorisine tıkla
             menCategoryButton.click();
@@ -267,5 +294,6 @@ public class FurkanPage {
             throw e;
         }
     }
+
 
 }
