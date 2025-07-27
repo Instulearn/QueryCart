@@ -19,14 +19,24 @@ public class FurkanStepdefinition extends OptionsMet {
     //Genel
     @Given("User verifies the button with description {string}")
     public void verify_button_visible_on_screen(String description) {
-        ReusableMethods.wait(5);
+        ReusableMethods.wait(1);
         furkancard.checkButtonByDescription(description);
     }
 
     @Given("User swipe the button with description {string}")
     public void swipe_button_visible_on_screen(String description) {
-        ReusableMethods.wait(5);
+        ReusableMethods.wait(1);
         furkancard.swipeButtonByDescription(description);
+    }
+
+    @Given("User {string} times click the Back Key.")
+    public void user_click_the_back_key(String sayi) {
+        furkancard.backfonksiyon(sayi);
+    }
+
+    @Given("User fast confirms to be on the homepage")
+    public void user_confirms_to_be_on_the_homepage() {
+        furkancard.LogoGorunurTest();
     }
 
 
