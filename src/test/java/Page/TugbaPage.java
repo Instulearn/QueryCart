@@ -99,7 +99,59 @@ public class TugbaPage {
         return Integer.parseInt(text) == uniqueProducts.size();
     }
 
+// US 011 Locate ve methodlari
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Wishlist\")")
+    private WebElement wishListButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
+    private WebElement addWishList1;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(9)")
+    private WebElement addWishList2;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Flower Print Foil T-shirt\n" +
+            "0 (0  Reviews)\n" +
+            "$65.00\")")
+    private WebElement product1;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Floral Print Midi Dress\n" +
+            "0 (0  Reviews)\n" +
+            "$100.00\")")
+    private WebElement product2;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Flower Print Foil T-shirt\n" +
+            "0 (0  Reviews)\n" +
+            "$65.00\")")
+    private WebElement product1OnWishList;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Floral Print Midi Dress\n" +
+            "0 (0  Reviews)\n" +
+            "$100.00\")")
+    private WebElement product2OnWishList;
+
+
+
+
+
+    public boolean isDisplayedAndEnabled(WebElement element){
+        return element.isDisplayed() & element.isEnabled();
+    }
+
+    public void clickElement(WebElement element){
+       element.click();
+    }
+
+    public boolean verifyWishlistProductsMatch(){
+
+        String productOnPage1 = product1.getAttribute("content-desc");
+        String productOnPage2 = product2.getAttribute("content-desc");
+        String productOnWishlistPage1 = product1OnWishList.getAttribute("content-desc");
+        String productOnWishlistPage2 = product2OnWishList.getAttribute("content-desc");
+
+        return productOnPage1.equals(productOnWishlistPage1)&productOnPage2.equals(productOnWishlistPage2);
+
+    }
 
 
 

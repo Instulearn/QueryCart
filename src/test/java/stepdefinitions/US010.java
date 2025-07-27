@@ -5,7 +5,7 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 import utilities.OptionsMet;
 
-public class TugbaStepDefinition extends OptionsMet {
+public class US010 extends OptionsMet {
     TugbaPage tugbaPage = new TugbaPage();
 
 
