@@ -26,7 +26,7 @@ Feature: As a user, I want to create a favorite list with the products I like wi
     # Kullanıcı "Bunun Yerine E-Mail Kullan" açıklamasına sahip düğmeye tıklar
     And User enters "Kerem" into the name field
     # Kullanıcı ad alanına "Kerem" yazar
-    And The user enters "userdeneme@abc.com" into the e-mail box.
+    And The user enters "userdeneme1@abc.com" into the e-mail box.
     # Kullanıcı e-posta kutusuna "userdeneme@abc.com" mail adresini girer.
     And The user enters "asd.123456" into the password box.
     # Kullanıcı e-posta kutusuna "asd.123456" mail adresini girer.
