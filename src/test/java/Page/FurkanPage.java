@@ -54,25 +54,72 @@ public class FurkanPage {
     //US13
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Men\")")
     private WebElement menCategoryButton;
-    
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Men Clothing\")")
     private WebElement menClothingCategoryButton;
-
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" + "0 (0  Reviews)\n" + "$15.00\"]")
     private WebElement firstProductInMenCategory;
-
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" + "0 (0  Reviews)\n" + "$15.00\"]/android.widget.ImageView")
     private WebElement firstProductWhistlistButton;
-
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Black\")")
     private WebElement firstProductPageBlackColorButton;
-
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='Add To Cart']")
     private WebElement addToCartButton;
-
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
     private WebElement filterButton;
 
+    //US14
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"(5-6 Years) Disney Mickey Mouse Pyjamas Boys T-shirt Shorts Set\n" + "0 (0  Reviews)\n" + "$15.00\")")
+    private WebElement firstProductInJuniorsCategory;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(3)")
+    private WebElement firstProductinJuniorsWhistlistButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Blue\")")
+    private WebElement firstProductPageBlueColorButton;
+
+    //US19
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(12)")
+    private WebElement sepetButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Proceed to Checkout\")")
+    private WebElement proceedToCheckout;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Delivery\")")
+    private WebElement deliveryButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Pick Up\")")
+    private WebElement pickUpButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Edit\")")
+    private WebElement editButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Add\")")
+    private WebElement addButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Order Summary\")")
+    private WebElement orderSummaryButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+    private WebElement fullNameBox;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(1)")
+    private WebElement eMailBox;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"+1201\")")
+    private WebElement firstPhoneSelect;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(2)")
+    private WebElement phoneBox;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Country\")")
+    private WebElement countryButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\")")
+    private WebElement countrySelectBox;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Turkey\")")
+    private WebElement TurkeySelect;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"State\")")
+    private WebElement stateButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"İzmir Province\")")
+    private WebElement izmirButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"City\")")
+    private WebElement cityButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Karşıyaka İlçesi\")")
+    private WebElement kskButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(3)")
+    private WebElement zipCode;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(4)")
+    private WebElement streetAdress;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Add Address\")")
+    private WebElement addAdressButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Furkan Detseli\n" + "+120105511967884\n" + "adres@furkan.com\n" + "Karşıyakaİlçesi,İzmirProvince,Turkey,35560\n" + "Cumhuriyet Mahallesi/Karşıyaka/İzmir\").instance(0)")
+    private WebElement address;
 
     //TODO ---------------------------------------------
     // BU BÖLÜMDEN SONRASI FONKSİYONLAR İÇERMEKTEDİR
@@ -135,6 +182,52 @@ public class FurkanPage {
         }
         if (count == maxScroll) {
             throw new RuntimeException("Add To Cart butonu bulunamadı!");
+        }
+    }
+
+    public void swipeHorizontalButtonByDescription(String description) {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        int maxScroll = 20;
+        int count = 0;
+        while (count < maxScroll) {
+            try {
+                WebElement button = driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().description(\"" + description + "\")"));
+                if (button.isDisplayed()) {
+                    System.out.println(button +" bulundu!");
+                    break;
+                }
+            } catch (Exception e) {
+                // Buton görünmüyorsa yatay scroll yap
+                swipeHorizontal();
+                count++;
+            }
+        }
+        if (count == maxScroll) {
+            throw new RuntimeException(description + " butonu bulunamadı!");
+        }
+    }
+
+    public void swipeHorizontal() {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        try {
+            int screenWidth = driver.manage().window().getSize().getWidth();
+            
+            // Y koordinatı 1300 olarak sabit, X koordinatları sol taraftan başlayarak
+            int left = (int) (screenWidth * 0.2);
+            int top = 1300;
+            int width = (int) (screenWidth * 0.6);
+            int height = 100;
+
+            java.util.Map<String, Object> params = new java.util.HashMap<>();
+            params.put("left", left);
+            params.put("top", top);
+            params.put("width", width);
+            params.put("height", height);
+            params.put("direction", "right");
+            params.put("percent", 0.8);
+            driver.executeScript("mobile: scrollGesture", params);
+        } catch (Exception e) {
+            System.out.println("Yatay swipe fonksiyonu hata: " + e.getMessage());
         }
     }
 
@@ -251,7 +344,7 @@ public class FurkanPage {
                 System.out.println("İstek Listesi görünür!");
                 firstProductWhistlistButton.click();
                 System.out.println("İstek listesi butonuna tıklandı!");
-                ReusableMethods.wait(2);
+                ReusableMethods.wait(1);
                 firstProductWhistlistButton.click();
                 System.out.println("İstek listesinden kaldırıldı!");
                 firstProductInMenCategory.click();
@@ -295,5 +388,90 @@ public class FurkanPage {
         }
     }
 
+    //US14 Fonksiyonlar
+    public void testFirstProductInJuniorsCategory(){
+        try {
+            assertTrue("Ürün görünür değil!", firstProductInJuniorsCategory.isDisplayed());
+            System.out.println("Ürün görünür!");
+            try {
+                assertTrue("İstek Listesi görünür değil!", firstProductinJuniorsWhistlistButton.isDisplayed());
+                System.out.println("İstek Listesi görünür!");
+                firstProductinJuniorsWhistlistButton.click();
+                System.out.println("İstek listesi butonuna tıklandı!");
+                ReusableMethods.wait(2);
+                firstProductinJuniorsWhistlistButton.click();
+                System.out.println("İstek listesinden kaldırıldı!");
+                firstProductInJuniorsCategory.click();
+                System.out.println("İlk Ürüne Tıklandı!");
+            }catch (Exception e) {
+                System.out.println("İstek Listesi görünür değil: " + e.getMessage());
+                throw e;
+            }
+        } catch (Exception e) {
+            System.out.println("Ürün görünür değil: " + e.getMessage());
+            throw e;
+        }
 
+    }
+
+    public void testFirstProductInJuniorsAddToCart(){
+        try {
+            assertTrue("Renk seçeneği görünür değil!", firstProductPageBlueColorButton.isDisplayed());
+            System.out.println("Renk seçeneği görünür!");
+            firstProductPageBlueColorButton.click();
+            scrollToAddToCartButton();
+            addToCartButton.click();
+            System.out.println("Başarıyla sepete eklendi!");
+        }catch (Exception e) {
+            System.out.println("Renk seçeneği görünür değil: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    //US19
+    public void clickShoppingCart(){
+        sepetButton.click();
+    }
+
+    public void createAdress() throws InterruptedException {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+
+        fullNameBox.click();
+        fullNameBox.sendKeys("Furkan Detseli");
+        System.out.println("isim eklendi");
+        eMailBox.click();
+        eMailBox.sendKeys("adres@furkan.com");
+        System.out.println("email eklendi");
+        phoneBox.click();
+        phoneBox.sendKeys("05511967884");
+        System.out.println("numara eklendi");
+        countryButton.click();
+        countrySelectBox.click();
+        countrySelectBox.sendKeys("Turkey");
+        TurkeySelect.click();
+        ReusableMethods.wait(1);
+        stateButton.click();
+        countrySelectBox.click();
+        countrySelectBox.sendKeys("izmir");
+        izmirButton.click();
+        ReusableMethods.wait(1);
+        cityButton.click();
+        countrySelectBox.click();
+        countrySelectBox.sendKeys("kar");
+        kskButton.click();
+        ReusableMethods.wait(1);
+        zipCode.click();
+        zipCode.sendKeys("35560");
+        driver.hideKeyboard();
+        swipeButtonByDescription("Add Address");
+        streetAdress.click();
+        zipCode.sendKeys("Cumhuriyet Mahallesi/Karşıyaka/İzmir");
+        System.out.println("adres eklendi");
+        driver.hideKeyboard();
+        addAdressButton.click();
+    }
+
+    public void addressClick(){
+        address.click();
+    }
 }
