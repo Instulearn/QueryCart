@@ -1,16 +1,12 @@
 package stepdefinitions;
 
 import Page.FurkanPage;
-import Page.LoginPage;
-import Page.QueryCardPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.interactions.Actions;
 import utilities.OptionsMet;
 import utilities.ReusableMethods;
 
 import static org.junit.Assert.assertTrue;
-import static utilities.Driver.getAppiumDriver;
 
 public class FurkanStepdefinition extends OptionsMet {
 
@@ -74,4 +70,32 @@ public class FurkanStepdefinition extends OptionsMet {
         furkancard.verifyAndClickFilterButton();
     }
 
+    //US14
+    @When("{string} Category Visibility and Functionality on Homepage")
+    public void user_checks_and_clicks_filter_button_in_junior(String button) {
+        furkancard.swipeHorizontalButtonByDescription(button);
+    }
+    @When("Taps on the first product inside the Juniors category")
+    public void tap_first_product_in_juniors_category(){
+        ReusableMethods.wait(1); // Sayfanın yüklenmesini bekle
+        furkancard.testFirstProductInJuniorsCategory();
+    }
+    @When("The user adds the first Juniors product to the cart")
+    public void add_first_juniors_product_to_cart(){
+        furkancard.testFirstProductInJuniorsAddToCart();
+    }
+
+    //US19
+    @When("User clicks the Shopping Cart button")
+    public void user_click_the_shopping_cart_button() {
+        furkancard.clickShoppingCart();
+    }
+    @When("User create an address")
+    public void user_create_an_adress() throws InterruptedException {
+        furkancard.createAdress();
+    }
+    @When("User clicks the first address")
+    public void address_click() throws InterruptedException {
+        furkancard.addressClick();
+    }
 } 
