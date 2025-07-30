@@ -1,34 +1,41 @@
 package stepdefinitions;
 
+import Page.FilizPage;
+import Page.FurkanPage;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.support.PageFactory;
 
-public class US001_Stepdefinitions {
+import static org.junit.Assert.assertTrue;
+import static utilities.Driver.getAppiumDriver;
 
-    @Given("the app is installed and launched")
-    public void the_app_is_installed_and_launched() {
+public class US001_Stepdefinitions{
+
+    FilizPage filizcard = new FilizPage();
+
+        public static AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+
+        @Given("the app is installed and launched")
+        public void the_app_is_installed_and_launched() {
+            // Bu step genelde test runner tarafından halledilir.
+            // Uygulama zaten açılmış varsayılır. Gerekirse kontrol yapılabilir.
+            Assert.assertNotNull("Driver başlatılamadı!", getAppiumDriver());
+        }
+
+        public void LogoGorunurTest() {
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            assertTrue(equals(filizcard.GetQueryCardLogoElement.isDisplayed()));
+            filizcard.GetQueryCardLogoElement.click();
+        }
+
 
     }
-    @When("the user opens the app")
-    public void the_user_opens_the_app() {
-
-    }
-    @Then("the home page should be visible")
-    public void the_home_page_should_be_visible() {
-
-    }
-
-    @Then("the site logo should be displayed on the home page")
-    public void the_site_logo_should_be_displayed_on_the_home_page() {
-
-    }
-
-
-
-
-
-
-
-
-}
