@@ -16,7 +16,7 @@ Feature: As a user, I want to create a favorite list with the products I like wi
     # Driver kapatılır
 
 
-  @Kc
+
   Scenario: [TC_23.2] To register a product, go to the Sign-in page and Sign up/Sign-in test.
     When User clicks on the button with the "Profile" description
     # Kullanıcı ana sayfadaki "Profil" açıklamasına sahip butona tıklar
@@ -27,7 +27,7 @@ Feature: As a user, I want to create a favorite list with the products I like wi
     And User enters "Kerem" into the name field
     # Kullanıcı ad alanına "Kerem" yazar
     And The user enters "userdeneme1@abc.com" into the e-mail box.
-    # Kullanıcı e-posta kutusuna "userdeneme@abc.com" mail adresini girer.
+    # Kullanıcı e-posta kutusuna "userdeneme@abc.com" mail adresini girer. (Bu sekme dinamik değil, otomatik mail üretiyor.Adımdaki maili değiştirmenize gerek yok).
     And The user enters "asd.123456" into the password box.
     # Kullanıcı e-posta kutusuna "asd.123456" mail adresini girer.
     And User clicks the "Sign Up" button
