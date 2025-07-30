@@ -1,58 +1,54 @@
 package stepdefinitions;
 
+import Page.FilizPage;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import utilities.ReusableMethods;
+
+import static utilities.Driver.getAppiumDriver;
 
 public class US002_Stepdefinetions {
+    FilizPage filizcard = new FilizPage();
+    AndroidDriver driver = (AndroidDriver) getAppiumDriver();
 
-    @Given("the user is on the home page")
-    public void the_user_is_on_the_home_page() {
-
+    @Given("User verified the {string} button")
+    public void user_verified_the_home_button(String description) {
+        filizcard.verifiedButton(description);
     }
 
-    @Then("the bottom navigation bar should be visible")
-    public void the_bottom_navigation_bar_should_be_visible() {
-
+    @Given("user verified the shopping Cart button")
+    public void user_verified_the_shopping_cart_button() {
+        filizcard.verifiedShopping();
     }
 
-    @Then("it should contain links for Home, Category, Wishlist, Cart, and Profile")
-    public void it_should_contain_links_for_home_category_wishlist_cart_and_profile() {
-
+    @Given("User click the {string} button")
+    public void user_click_the_home_button(String description) {
+        filizcard.clickButton(description);
     }
 
-    @When("the user taps on the {string} button in the bottom navigation bar")
-    public void the_user_taps_on_the_button_in_the_bottom_navigation_bar(String string) {
-
+    @Given("user click the shopping Cart button")
+    public void user_click_the_shopping_cart_button() {
+        filizcard.clickShopping();
     }
 
-    @Then("the {string} page should be displayed")
-    public void the_page_should_be_displayed(String string) {
-
+    @Given("user click search button")
+    public void user_click_search_button() {
+        filizcard.clickSearch();
     }
-
-    @Then("the search box should be displayed on the home page")
-    public void the_search_box_should_be_displayed_on_the_home_page() {
-
-    }
-
-    @When("the user enters {string} into the search box")
-    public void the_user_enters_into_the_search_box(String string) {
-
-    }
-
-    @When("the user taps the search button")
-    public void the_user_taps_the_search_button() {
-
-    }
-
-    @Then("the search results for {string} should be displayed")
-    public void the_search_results_for_should_be_displayed(String string) {
-
-    }
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+

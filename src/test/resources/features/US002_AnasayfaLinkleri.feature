@@ -5,29 +5,21 @@ Feature: Home Page UI elements and navigation
   And be able to navigate using the bottom bar and search for items
 
   Background:
-    Given the app is launched
-    And the user is on the home page
+    * User makes driver adjustments
+    * User confirms to be on the homepage
 
   Scenario: Bottom navigation links are visible
-    Then the bottom navigation bar should be visible
-    And it should contain links for Home, Category, Wishlist, Cart, and Profile
+    * User verified the "Home" button
+    * User verified the "Category" button
+    * User verified the "Wishlist" button
+    * User verified the "Profile" button
+    * user verified the shopping Cart button
+    * user click the shopping Cart button
+    * User click the "Home" button
+    * User click the "Category" button
+    * User click the "Profile" button
+    * User click the "Wishlist" button
+    * User "1" times click the Back Key.
+    * user click search button
 
-  Scenario Outline: Navigation link redirects to correct page
-    When the user taps on the "<link>" button in the bottom navigation bar
-    Then the "<page>" page should be displayed
 
-    Examples:
-      | link     | page     |
-      | Home     | Home     |
-      | Category | Category |
-      | Wishlist | Wishlist |
-      | Cart     | Cart     |
-      | Profile  | Profile  |
-
-  Scenario: Search text box is visible
-    Then the search box should be displayed on the home page
-
-  Scenario: User can perform a search
-    When the user enters "laptop" into the search box
-    And the user taps the search button
-    Then the search results for "laptop" should be displayed
