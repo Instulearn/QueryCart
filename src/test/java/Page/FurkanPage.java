@@ -465,6 +465,7 @@ public class FurkanPage {
         driver.hideKeyboard();
         swipeButtonByDescription("Add Address");
         streetAdress.click();
+        ReusableMethods.wait(1);
         zipCode.sendKeys("Cumhuriyet Mahallesi/Karşıyaka/İzmir");
         System.out.println("adres eklendi");
         driver.hideKeyboard();
