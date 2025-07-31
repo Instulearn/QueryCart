@@ -85,6 +85,13 @@ public class FurkanStepdefinition extends OptionsMet {
         furkancard.testFirstProductInJuniorsAddToCart();
     }
 
+    //US18
+    @When("User clicks the first order")
+    public void click_first_order(){
+        furkancard.clickfirstorder();
+    }
+
+
     //US19
     @When("User clicks the Shopping Cart button")
     public void user_click_the_shopping_cart_button() {

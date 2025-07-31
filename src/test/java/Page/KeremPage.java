@@ -5,8 +5,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Getter;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
 
@@ -66,19 +68,55 @@ public class KeremPage {
 
 
 
+    //Wishlist Locator'lar
+    @AndroidFindBy(xpath = "(//*[@class='android.view.View'])[4]")
+    private WebElement wishlistPageWishlistTitle;
 
+    @AndroidFindBy(xpath = "(//*[@index='2'])[1]")
+    private WebElement itemQuantityText;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
+    private WebElement wishlistPageProductFavoriteButton;
 
 
 
     // METHODLAR
+    // Descriptiona gore tiklama yapar
     public void clickByDescription (String description) {
         AndroidDriver driver = (AndroidDriver) getAppiumDriver();
         WebElement button = driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiSelector().description(\"" + description + "\")"));
         button.click();
         ReusableMethods.wait(3);
-
     }
+
+    // Her Sign Up'da yeni bir mail uretir
+    public static String generateUniqueEmail() {
+        return "user" + System.currentTimeMillis() + "@query.com";
+    }
+
+
+    // Gecerli mail ve sifre ile login olma
+    public void loginWithValidCredentials (String email, String password) {
+        String validMail = ConfigReader.getProperty(email);
+        String validPassword = ConfigReader.getProperty(password);
+        signinEmailTextBox.click();
+        signinEmailTextBox.sendKeys(validMail);
+        signinPasswordTextBox.click();
+        signinPasswordTextBox.sendKeys(validPassword);
+    }
+
+    // Descriptiona gore gorunurluk ve aktiflik testi yapar
+    public void visibleAndActiveByDescription (String description) {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        WebElement button = driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiSelector().description(\"" + description + "\")"));
+        Assert.assertTrue(button.isDisplayed());
+        Assert.assertTrue(button.isEnabled());
+        System.out.println("Kullanıcı "+description+" butonunun aktif ve gorunebilir oldugunu dogrular");
+        ReusableMethods.wait(2);
+    }
+
 }
 
 

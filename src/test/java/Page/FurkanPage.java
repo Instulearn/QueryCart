@@ -75,6 +75,11 @@ public class FurkanPage {
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Blue\")")
     private WebElement firstProductPageBlueColorButton;
 
+    //US18
+    @AndroidFindBy(uiAutomator = "\"#2907251322\n10:48 AM, 29-07-2025\nInfo: \n1 Product\nDelivery Status: \nCanceled\nPayment Status: \nUnpaid\nTotal: \n$130.36\")")
+    private WebElement denemefirstorder;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"#2907251322\n" + "10:48 AM, 29-07-2025\n" + "Info: \n" + "1 Product\n" + "Delivery Status: \n" + "Canceled\n" + "Payment Status: \n" + "Unpaid\n" + "Total: \n" + "$130.36\")")
+    private WebElement firstOrder;
     //US19
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(12)")
     private WebElement sepetButton;
@@ -120,6 +125,8 @@ public class FurkanPage {
     private WebElement addAdressButton;
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Furkan Detseli\n" + "+120105511967884\n" + "adres@furkan.com\n" + "Karşıyakaİlçesi,İzmirProvince,Turkey,35560\n" + "Cumhuriyet Mahallesi/Karşıyaka/İzmir\").instance(0)")
     private WebElement address;
+
+
 
     //TODO ---------------------------------------------
     // BU BÖLÜMDEN SONRASI FONKSİYONLAR İÇERMEKTEDİR
@@ -428,6 +435,11 @@ public class FurkanPage {
         }
     }
 
+    //US18
+    public void clickfirstorder() {
+        firstOrder.click();
+    }
+
     //US19
     public void clickShoppingCart(){
         sepetButton.click();
@@ -465,6 +477,7 @@ public class FurkanPage {
         driver.hideKeyboard();
         swipeButtonByDescription("Add Address");
         streetAdress.click();
+        ReusableMethods.wait(1);
         zipCode.sendKeys("Cumhuriyet Mahallesi/Karşıyaka/İzmir");
         System.out.println("adres eklendi");
         driver.hideKeyboard();
@@ -474,4 +487,6 @@ public class FurkanPage {
     public void addressClick(){
         address.click();
     }
+
+
 }
