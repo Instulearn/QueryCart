@@ -102,6 +102,17 @@ public class KeremPage {
     private WebElement subtotalAmount;
 
 
+    /// US020 locatorlar
+     @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+     private WebElement oldPasswordTextBox;
+
+    @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(1)")
+    private WebElement newPasswordTextBox;
+
+    @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(2)")
+    private WebElement confirmPasswordTextBox;
+
+
 
     /// METHODLAR
     // Descriptiona gore tiklama yapar

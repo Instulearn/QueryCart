@@ -24,7 +24,7 @@ Feature: As a user, I want to create a favorite list with the products I like wi
     # Kullanıcı "Kayıt Ol" açıklamasına sahip butona tıklar
     And User clicks on the button with the "*Use Email Instead" description
     # Kullanıcı "Bunun Yerine E-Mail Kullan" açıklamasına sahip düğmeye tıklar
-    And User enters "Kerem" into the name field
+    And User enters "Team159" into the name field
     # Kullanıcı ad alanına "Kerem" yazar
     And The user enters "userdeneme1@abc.com" into the e-mail box.
     # Kullanıcı e-posta kutusuna "userdeneme@abc.com" mail adresini girer. (Bu sekme dinamik değil, otomatik mail üretiyor.Adımdaki maili değiştirmenize gerek yok).
