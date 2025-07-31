@@ -1,4 +1,4 @@
-
+@canan
 Feature: US_024 - As a registered user, I want to have a payment page where I can pay for my orders that I control.
 
 
@@ -21,16 +21,15 @@ Feature: US_024 - As a registered user, I want to have a payment page where I ca
    * User swipe the button with description "Save & Pay"
    * User clicks the button with description "Save & Pay"
 
-  Scenario: Ödeme yöntemi seçilebilmeli ve odeme yapilabilmelidir
+  Scenario: Ödeme yapılmalı ve sipariş detayları görüntülenebilmeli
     * User clicks the button with description "Save & Pay"
     * User verifies the button with description "Select Payment Method"
     * Select "Stripe" as the payment method
+    * Click on the Confirm Order button
     * Enter valid card number, expiry date,CVC and ZIP
-    * Verify that the Confirm Order button is visible and active
-    * Click on the "Confirm Order" button
-
-  Scenario: Sipariş detayları ve fatura görüntülenebilmeli
+    * Click on the Confirm button
     * Click on Go to order details
-    * Verify that Download Receipt button is visible
-    * Click on Download Receipt
-    * Verify that Print Invoice button is visible
+    * Click on last order
+    * Verify that "Thank You" text is visible
+    * User "5" times click the Back Key.
+
