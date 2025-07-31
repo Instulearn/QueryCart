@@ -23,7 +23,7 @@
       When User verifies that the cart button is visible and active
     # Kullanıcı, sepet butonunun düğmesinin görünür ve etkin olduğunu doğrular
 
-    @wip
+
     Scenario: [TC_27.2 -TC_27.3 -TC_27.4] On the Shopping Cart page, products added to the cart should be displayed and can be deleted
      # Alışveriş Sepeti sayfasında sepete eklenen ürünler görüntülenmeli ve silinebilmelidir.
       When User clicks on the button with the "Profile" description

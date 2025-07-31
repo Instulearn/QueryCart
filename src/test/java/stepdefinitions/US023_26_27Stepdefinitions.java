@@ -214,5 +214,34 @@ public class US023_26_27Stepdefinitions extends OptionsMet {
     }
 
 
+    // US020
+
+    @When("The user sees the old password, new password, and password checkboxes and tests whether they are active.")
+    public void the_user_sees_the_old_password_new_password_and_password_checkboxes_and_tests_whether_they_are_active() {
+       ReusableMethods.wait(2);
+        assertTrue(keremPage.getOldPasswordTextBox().isDisplayed());
+        assertTrue(keremPage.getNewPasswordTextBox().isDisplayed());
+        assertTrue(keremPage.getConfirmPasswordTextBox().isDisplayed());
+        assertTrue(keremPage.getOldPasswordTextBox().isEnabled());
+        assertTrue(keremPage.getNewPasswordTextBox().isEnabled());
+        assertTrue(keremPage.getConfirmPasswordTextBox().isEnabled());
+        System.out.println("Kullanıcı eski şifre, yeni şifre ve doğrulanan şifre kutularının görünür ve aktif olduğunu test eder");
+    }
+
+    @Then("The user enters information in all boxes")
+    public void the_user_enters_information_in_all_boxes() {
+        ReusableMethods.wait(1);
+        keremPage.getOldPasswordTextBox().click();
+        keremPage.getOldPasswordTextBox().sendKeys(registeredPassword);
+        registeredPassword = registeredPassword + "1";
+        keremPage.getNewPasswordTextBox().click();
+        keremPage.getNewPasswordTextBox().sendKeys(registeredPassword);
+        keremPage.getConfirmPasswordTextBox().click();
+        keremPage.getConfirmPasswordTextBox().sendKeys(registeredPassword);
+
+    }
+
+
+
 
 }
