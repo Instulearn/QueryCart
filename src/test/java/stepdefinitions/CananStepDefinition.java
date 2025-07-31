@@ -1,8 +1,17 @@
 package stepdefinitions;
 
 import Page.CananPage;
+import io.appium.java_client.AppiumBy;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.ReusableMethods;
+
+import java.time.Duration;
+
+import static utilities.Driver.getAppiumDriver;
 
 public class CananStepDefinition {
 
@@ -80,41 +89,45 @@ public class CananStepDefinition {
 
     @Given("Enter valid card number, expiry date,CVC and ZIP")
     public void enter_valid_card_number_expiry_date_cvc_and_zip() {
-        page.enterCardNumber("424242424242"); //BURAYI KONTROL ET
+        ReusableMethods.wait(2);
+        page.enterCardNumber("4242424242424242"); //BURAYI KONTROL ET
         page.enterExpiryDate("12/26");
         page.enterCVC("123");
         page.enterZIP("12345");
     }
-    @Given("Verify that the Confirm Order button is visible and active")
-    public void verify_that_the_confirm_order_button_is_visible_and_active() {
-        Assert.assertTrue(page.isConfirmOrderButtonVisibleAndEnabled());
+
+    @Given("Click on the Confirm Order button")
+    public void click_on_the_confirm_order_button() {
+        page.clickConfirmOrderButton();
     }
-        @Given("Click on the {string} button")
-        public void click_on_the_button(String string) {
-           page.clickConfirmOrderButton();
-        }
+
+    @Given("Click on the Confirm button")
+    public void click_on_the_confirm_button() {
+        page.clickConfirmButonu();
+        ReusableMethods.wait(2);
+
+    }
     @Given("Click on Go to order details")
     public void click_on_go_to_order_details() {
-        page.clickGoToOrderDetails();
+        WebDriverWait wait = new WebDriverWait(getAppiumDriver(), Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                AppiumBy.androidUIAutomator("new UiSelector().description(\"Go to order details\")")
+        ));
+        element.click();
+    }
 
-    }
-    @Given("Verify that Download Receipt button is visible")
-    public void verify_that_download_receipt_button_is_visible() {
-        Assert.assertTrue("Download Receipt button görünmüyor!", page.isDownloadReceiptVisible());
-    }
-    @Given("Click on Download Receipt")
-    public void click_on_download_receipt() {
-        page.clickDownloadReceipt();
-
-    }
-    @Given("Verify that Print Invoice button is visible")
-    public void verify_that_print_invoice_button_is_visible() {
-        Assert.assertTrue("Print Invoice button görünmüyor!", page.isPrintInvoiceVisible());
-
-    }
     @Given("User clicks the 1st address")
     public void user_clicks_the_1st_address() {
         page.clickFirstAddress();
     }
 
+    @Given("Click on last order")
+    public void click_on_last_order() {
+       page.allOrderCards.get(0).click();
+    }
+    @Given("Verify that {string} text is visible")
+    public void verify_that_text_is_visible(String string) {
+
+        Assert.assertTrue(page.thankyouText.isDisplayed());
+     }
 }

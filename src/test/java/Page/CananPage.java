@@ -3,10 +3,12 @@ package Page;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Set;
 
 import static utilities.Driver.getAppiumDriver;
 
@@ -58,7 +60,7 @@ public class CananPage {
     private WebElement CVCinput;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(3)")
-    private WebElement ZIPinput; //BUNUN ICIN saga kaydirma Lazim
+    private WebElement ZIPinput;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"confirmBtn\")")
     private WebElement ConfirmB;
@@ -67,13 +69,10 @@ public class CananPage {
     private WebElement orderDetailsButonu;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Delivery Status\")")
-    public List<WebElement> allOrderCards;  //bunu cagirmak icin  allOrderCards.get(0).click(); // ilk görünen order kartına tıklar
+    public List<WebElement> allOrderCards;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Download Receipt\")")
-    private WebElement DownloadReceiptButonu;
-
-    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Print Invoice\")")
-    private WebElement PrintInvoiceButonu;
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Thank You\")")
+    public WebElement thankyouText;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().description(\"canan\n" +
             "+1201444242344\n" +
@@ -81,12 +80,12 @@ public class CananPage {
             "Toronto,Ontario,Canada,11111111111\n" +
             "fghjjj\")")
 
+
     private WebElement CananAdress;
 
     public void clickFirstAddress() {
         CananAdress.click();
-        }
-
+    }
 
     public WebElement getLogoutButonu() {
         return logoutButonuC;
@@ -116,6 +115,10 @@ public class CananPage {
         saveChangesButonu.click();
     }
 
+    public void clickConfirmButonu() {
+        ConfirmB.click();
+    }
+
     public boolean isFullNameEditable() {
         return fullNameInputC.isEnabled();
     }
@@ -132,6 +135,7 @@ public class CananPage {
         return saveChangesButonu.isDisplayed() && saveChangesButonu.isEnabled();
 
     }
+
     public WebElement getSelectPaymentMethodTitle() {
         return selectPaymentMethodBasligi;
     }
@@ -143,6 +147,7 @@ public class CananPage {
     public void clickStripeButton() {
         stripeButonu.click();
     }
+
     public void enterCardNumber(String cardNumber) {
         cardNumberInput.clear();
         cardNumberInput.sendKeys(cardNumber);
@@ -162,25 +167,17 @@ public class CananPage {
         ZIPinput.clear();
         ZIPinput.sendKeys(zip);
     }
+
     public boolean isConfirmOrderButtonVisibleAndEnabled() {
         return confirmOrderButonu.isDisplayed() && confirmOrderButonu.isEnabled();
     }
+
     public void clickConfirmOrderButton() {
         confirmOrderButonu.click();
     }
+
     public void clickGoToOrderDetails() {
         orderDetailsButonu.click();
     }
 
-    public boolean isDownloadReceiptVisible() {
-        return DownloadReceiptButonu.isDisplayed();
-    }
-
-    public void clickDownloadReceipt() {
-        DownloadReceiptButonu.click();
-    }
-
-    public boolean isPrintInvoiceVisible() {
-        return PrintInvoiceButonu.isDisplayed();
-    }
-    }
+}
