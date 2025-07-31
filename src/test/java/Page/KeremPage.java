@@ -36,6 +36,20 @@ public class KeremPage {
     @AndroidFindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
     private WebElement homePageQueryCartText;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(18)")
+    private WebElement homePageCartButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Flower Print Foil T-shirt\n" +
+            "0 (0  Reviews)\n" +
+            "$65.00\")")
+    private WebElement addToCartProduct;
+
+
+
+    // Ürün Sayfası Locator
+    @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(12)")
+    private WebElement productPageShoppingCartButton;
+
 
 
     //Sing Up Page Locator'lar
@@ -80,7 +94,16 @@ public class KeremPage {
 
 
 
-    // METHODLAR
+    //Cart Page Locator
+    @AndroidFindBy(xpath = "(//*[@index='1'])[3]")
+    private WebElement productInCart;
+
+    @AndroidFindBy(xpath = "(//*[@index='3'])[1]")
+    private WebElement subtotalAmount;
+
+
+
+    /// METHODLAR
     // Descriptiona gore tiklama yapar
     public void clickByDescription (String description) {
         AndroidDriver driver = (AndroidDriver) getAppiumDriver();
@@ -115,6 +138,19 @@ public class KeremPage {
         Assert.assertTrue(button.isEnabled());
         System.out.println("Kullanıcı "+description+" butonunun aktif ve gorunebilir oldugunu dogrular");
         ReusableMethods.wait(2);
+    }
+
+    // Descriptiona gore scrool yapip elementi bulma
+    public void scrollAndClickByDescription(String description) {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        try {
+            WebElement element = driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView("
+                            + "new UiSelector().description(\"" + description + "\"))"));
+            ReusableMethods.wait(2);
+        } catch (Exception e) {
+            System.out.println("Element with description '" + description + "' not found after scrolling.");
+        }
     }
 
 }

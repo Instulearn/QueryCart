@@ -118,7 +118,6 @@ public class US023_26_27Stepdefinitions extends OptionsMet {
         ReusableMethods.wait(1);
         keremPage.getSingupButton().click();
         System.out.println("Kullanici sign up butonuna tiklar");
-
     }
 
 
@@ -160,6 +159,58 @@ public class US023_26_27Stepdefinitions extends OptionsMet {
         ReusableMethods.wait(3);
         assertTrue(keremPage.getItemQuantityText().getAttribute("content-desc").contains("0  Products"));
         System.out.println("Listede 0 urun oldugunu dogrular");
+    }
+
+
+    ///************ US027 *****************
+    // US027.1
+
+    @When("User verifies that the cart button is visible and active")
+    public void user_verifies_that_the_cart_button_is_visible_and_active() {
+        ReusableMethods.wait(2);
+        assertTrue(keremPage.getHomePageCartButton().isDisplayed());
+        assertTrue(keremPage.getHomePageCartButton().isEnabled());
+        System.out.println("Kullanici AlışVeriş Sepeti butonunun görünür ve etkin olduğunu doğrular");
+    }
+
+    @Then("The user clicks on the product wants to add to cart.")
+    public void the_user_clicks_on_the_product_wants_to_add_to_cart() {
+        ReusableMethods.wait(2);
+        keremPage.getAddToCartProduct().click();
+        System.out.println("Kullanici ürünü sepete ekler");
+    }
+
+    @When("User clicks on the button with the cart button")
+    public void user_clicks_on_the_button_with_the_cart_button() {
+        ReusableMethods.wait(2);
+        keremPage.getHomePageCartButton().click();
+    }
+
+    @Then("The user confirms that the product in the cart is the product they selected")
+    public void the_user_confirms_that_the_product_in_the_cart_is_the_product_they_selected() {
+        ReusableMethods.wait(2);
+        assertTrue(keremPage.getProductInCart().getAttribute("content-desc").contains("Flower Print Foil"));
+        System.out.println("Kullanici sepetteki ürünün seçtiği ürün olduğunu doğrular");
+    }
+
+    @When("The user swip on the button with the {string} description")
+    public void the_user_clicks_on_the_button_with_the_description(String description) {
+        ReusableMethods.wait(1);
+        keremPage.scrollAndClickByDescription(description);
+        System.out.println("Kullanici ekrani Add To Cart Butonuna kadar kaydırır");
+    }
+
+    @When("User click the cart button on the page")
+    public void user_click_the_cart_button_on_the_page() {
+        keremPage.getProductPageShoppingCartButton().click();
+        System.out.println("Kullanici alış veriş sepeti butonuna tiklar");
+    }
+
+    @When("User confirms that the subtotal amount is {string} after the deletion.")
+    public void user_confirms_that_the_subtotal_amount_is_after_the_deletion(String amount) {
+        assertTrue(keremPage.getSubtotalAmount().getAttribute("content-desc").equals(amount));
+        System.out.println("Kullanıcı silme işlemi sonrası sepet ara toplamının 0.00$ olduğunu doğrular");
+
     }
 
 
