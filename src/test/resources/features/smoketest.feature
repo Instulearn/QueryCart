@@ -23,8 +23,6 @@ Feature: Smoke Test, temel işlevlerin doğru çalışıp çalışmadığını h
     # Kullanıcı searchTextBox'a ürün adını girerek hem textbox'ın çalıştığını kontrol eder hemde aradığı ürünün bulunmasında yardımcı olur.
     * User waits "3" seconds
     # Kullanıcı aradığı ürünün gelmesi için 3 saniye bekler (internet problemi)
-    * User clicks the fav button of the product for adding it to the wishlist
-    # Kullanıcı arama sonucunda çıkan ürünü wiss list (favori) ekler bu şekilde sitede normal bir kullanıcı bile sevdiği ürünü kaydede bilir.
     * User "2" times click the Back Key.
     # Kullanıcı ürünü favorilere ekledikten sonra geri tuşuna 2 kez basarak arama sayfasına yeniden yönlendirilir
     * User clicks the button with description "Wishlist"
