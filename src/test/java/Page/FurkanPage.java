@@ -447,39 +447,47 @@ public class FurkanPage {
 
     public void createAdress() throws InterruptedException {
         AndroidDriver driver = (AndroidDriver) getAppiumDriver();
-
+        ReusableMethods.wait(2);
         fullNameBox.click();
         fullNameBox.sendKeys("Furkan Detseli");
         System.out.println("isim eklendi");
+        ReusableMethods.wait(2);
         eMailBox.click();
         eMailBox.sendKeys("adres@furkan.com");
         System.out.println("email eklendi");
+        ReusableMethods.wait(2);
         phoneBox.click();
         phoneBox.sendKeys("05511967884");
         System.out.println("numara eklendi");
+        ReusableMethods.wait(2);
         countryButton.click();
         countrySelectBox.click();
         countrySelectBox.sendKeys("Turkey");
+        ReusableMethods.wait(2);
         TurkeySelect.click();
         ReusableMethods.wait(1);
         stateButton.click();
         countrySelectBox.click();
         countrySelectBox.sendKeys("izmir");
+        ReusableMethods.wait(2);
         izmirButton.click();
         ReusableMethods.wait(1);
         cityButton.click();
         countrySelectBox.click();
         countrySelectBox.sendKeys("kar");
+        ReusableMethods.wait(2);
         kskButton.click();
         ReusableMethods.wait(1);
         zipCode.click();
         zipCode.sendKeys("35560");
         driver.hideKeyboard();
         swipeButtonByDescription("Add Address");
+        ReusableMethods.wait(2);
         streetAdress.click();
         ReusableMethods.wait(1);
         zipCode.sendKeys("Cumhuriyet Mahallesi/Karşıyaka/İzmir");
         System.out.println("adres eklendi");
+        ReusableMethods.wait(2);
         driver.hideKeyboard();
         addAdressButton.click();
     }
