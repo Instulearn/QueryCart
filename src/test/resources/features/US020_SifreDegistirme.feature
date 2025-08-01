@@ -4,7 +4,7 @@ Feature: As a registered user, I want to change my password on my dashboard page
   Background: User opens the app
     Given User makes driver adjustments
           # Kullanıcı sürücü ayarlamalarını yapar
-  @wip
+
   Scenario: [TC_20.1 -TC_20.2 -TC_20.3 -TC_20.4] Change User Password link visibility and activity test in User Control Panel
     # Ürün üzerindeki favori ikonunun görünürlüğünü ve etkinliğini test ederek istenilen ürünü favori alanına ekleme
     When User clicks on the button with the "Profile" description
