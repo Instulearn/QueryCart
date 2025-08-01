@@ -103,14 +103,29 @@ public class KeremPage {
 
 
     /// US020 locatorlar
-     @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
-     private WebElement oldPasswordTextBox;
+    @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(0)")
+    private WebElement oldPasswordTextBox;
 
     @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(1)")
     private WebElement newPasswordTextBox;
 
     @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(2)")
     private WebElement confirmPasswordTextBox;
+
+
+    /// US015 locatorlar
+    @AndroidFindBy (xpath = "//*[@content-desc='Categories']")
+    private WebElement homePageCategoriesTitle;
+
+    @AndroidFindBy (xpath = "(//*[@class='android.widget.ImageView'])[10]")
+    private WebElement womenPageSecondProductFavoriteButton;
+
+    @AndroidFindBy (xpath = "(//*[@class='android.view.View'])[12]")
+    private WebElement womenPageSecondProduct;
+
+    @AndroidFindBy (uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(2)")
+    private WebElement filterButton;
+
 
 
 

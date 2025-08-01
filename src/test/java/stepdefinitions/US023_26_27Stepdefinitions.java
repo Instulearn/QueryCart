@@ -1,15 +1,21 @@
 package stepdefinitions;
 
 import Page.KeremPage;
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.*;
 import jdk.jfr.Registered;
 import lombok.Getter;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import utilities.Driver;
 import utilities.OptionsMet;
 import utilities.ReusableMethods;
 
-import static org.junit.Assert.assertTrue;
+import javax.sound.midi.InvalidMidiDataException;
 
+import static org.junit.Assert.assertTrue;
+import static utilities.Driver.getAppiumDriver;
 
 
 public class US023_26_27Stepdefinitions extends OptionsMet {
@@ -238,9 +244,94 @@ public class US023_26_27Stepdefinitions extends OptionsMet {
         keremPage.getNewPasswordTextBox().sendKeys(registeredPassword);
         keremPage.getConfirmPasswordTextBox().click();
         keremPage.getConfirmPasswordTextBox().sendKeys(registeredPassword);
-
     }
 
+
+
+    // US015
+    @Then("User sees categories title on home page")
+    public void user_sees_categories_title_on_home_page() {
+        assertTrue(keremPage.getHomePageCategoriesTitle().isDisplayed());
+        System.out.println("Kullanıcı ana sayfada Categories başlığını görür");
+    }
+
+    @Then("Women Category Visibility and Functionality on Homepage")
+    public void women_category_visibility_and_functionality_on_homepage() throws InvalidMidiDataException {
+        for (int i = 0; i < 9; i++) {
+            OptionsMet.swipe(1260, 1280, 200, 1280);
+            ReusableMethods.wait(1);
+        }
+        {
+            for (int i = 0; i < 5; i++) {
+                OptionsMet.swipe(300, 1280, 1260, 1280);
+                ReusableMethods.wait(1);
+
+            }
+
+        }
+        System.out.println("Kullanıcı categori başlığı altında gezinir");
+    }
+
+    @When("User verifies that the Filter button is displayed and active")
+    public void user_verifies_that_the_filter_button_is_displayed_and_active() {
+        ReusableMethods.wait(2);
+        assertTrue(keremPage.getFilterButton().isDisplayed());
+        assertTrue(keremPage.getFilterButton().isEnabled());
+        System.out.println("Kullanıcı Filtreleme butonunun görüntülendiğini ve aktif olduğunu doğrular");
+    }
+
+    @Then("User on the Women page, sees the second product itself and the favorite button")
+    public void user_on_the_women_page_sees_the_second_product_itself_and_the_favorite_button() {
+       assertTrue(keremPage.getWomenPageSecondProduct().isDisplayed());
+       assertTrue(keremPage.getWomenPageSecondProductFavoriteButton().isDisplayed());
+        System.out.println("Kullanıcı Women sayfasında 2.ürünü ve ürünün kalp ikonunu görüntüler");
+    }
+
+    @Then("User clicks on second product to add to cart")
+    public void user_clicks_on_second_product_to_add_to_cart() {
+        keremPage.getWomenPageSecondProduct().click();
+        System.out.println("Kullanıcı Women sayfasında 2.ürüne tıklar");
+        ReusableMethods.wait(2);
+    }
+
+    @Then("User clicks on the Filter button")
+    public void user_clicks_on_the_filter_button() {
+        keremPage.getFilterButton().click();
+        ReusableMethods.wait(1);
+        System.out.println("Kullanıcı filtre butonuna tıklar");
+    }
+
+    @When("The user returns to the previous page")
+    public void the_user_returns_to_the_previous_page() {
+        getAppiumDriver().navigate().back();
+        ReusableMethods.wait(2);
+        System.out.println("Kullanıcı bir önceki sayfaya geri döner");
+    }
+
+    @When("User swip on the button with the {string} description")
+    public void user_swip_on_the_button_with_the_description(String description) {
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        int maxSwipes = 5;
+
+        for (int i = 0; i < maxSwipes; i++) {
+            try {
+                WebElement element = driver.findElement(AppiumBy.accessibilityId(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView("
+                                + "new UiSelector().description(\"" + description + "\"))"));
+                System.out.println("Element bulundu: " + description);
+                return; // bulunduysa çık
+            } catch (Exception e) {
+                // daha kısa scroll yap
+                ReusableMethods.swipe(600, 1200, 600, 1000, 500);
+            }
+        }
+        System.out.println("Element bulunamadı: " + description);
+    }
+
+    @When("The user scrolls the screen slightly up")
+    public void the_user_scrolls_the_screen_slightly_up() throws InvalidMidiDataException {
+        OptionsMet.swipe(750,800,750,1400);
+    }
 
 
 
